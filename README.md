@@ -167,4 +167,22 @@ python bot.py
 - Cloud deployment
 
 ---
+## Screenshots
+
+### Summary Output
+![Summary](screenshots/summary.png)
+
+### Q&A Example
+![Q&A](screenshots/qa.png)
+
+### Multi-language Support
+![Multi-language](screenshots/multilang.png)
+
+
+---
+
+## Demo Video
+
+Watch the demo here:  
+[Project Demo](https://drive.google.com/file/d/1sP5AEOWzne4bnef1WHF-cGw_2uVvVlom/view?usp=sharing)
 
