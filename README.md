@@ -173,10 +173,10 @@ python bot.py
 ![Summary](screenshots/summary.png)
 
 ### Q&A Example
-![Q&A](screenshots/qa.png)
+![Q&A](screenshots/QandA.png)
 
 ### Multi-language Support
-![Multi-language](screenshots/multilang.png)
+![Multi-language](screenshots/multilingual.png)
 
 
 ---
