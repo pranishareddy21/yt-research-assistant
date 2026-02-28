@@ -1,122 +1,170 @@
-YT Research Assistant
+# YT Research Assistant
 
-Telegram YouTube Summarizer & Q&A Bot
+## Telegram YouTube Summarizer & Q&A Bot
 
-Project Overview
+---
+
+## Project Overview
 
 YT Research Assistant is a Telegram bot that helps users quickly understand and interact with long YouTube videos.
 
 The system allows users to:
 
-Submit a YouTube link
+- Submit a YouTube link
+- Receive a structured summary
+- Ask contextual follow-up questions
+- Extract actionable insights
+- Request responses in multiple Indian languages
 
-Receive a structured summary
+---
 
-Ask contextual follow-up questions
+## Core Features
 
-Extract actionable insights
-
-Request responses in multiple Indian languages
-
-Core Features
-Structured Summary
+### Structured Summary
 
 When a YouTube link is submitted, the bot returns:
 
-Video Title
+- Video Title
+- 5 Key Points
+- Important Timestamps
+- Core Takeaway
 
-5 Key Points
+The output is structured and concise rather than an unformatted paragraph.
 
-Important Timestamps
+---
 
-Core Takeaway
+### Contextual Q&A
 
-Contextual Q&A
+After a video is processed, users can ask follow-up questions.
 
-After processing a video, users can ask follow-up questions.
+The system:
+- Splits transcript into chunks
+- Ranks relevant chunks using similarity scoring
+- Generates answers strictly grounded in transcript context
 
-The bot:
+If the information is not present in the transcript, the bot responds with:
 
-Retrieves relevant transcript sections
+> This topic is not covered in the video.
 
-Generates answers grounded strictly in the transcript
+---
 
-Returns:
-"This topic is not covered in the video."
-if information is missing
-
-Action Points
+### Action Points Extraction
 
 Users can request:
 
-action points
+`action points`
 
-The bot extracts practical insights from the video.
+The bot extracts practical insights from the video in a structured format.
 
-Multi-language Support
+---
+
+### Multi-language Support
 
 Supported languages:
 
-English (default)
+- English (default)
+- Hindi
+- Telugu
+- Tamil
+- Kannada
+- Marathi
 
-Hindi
+Users can request summaries or answers in their preferred language.
 
-Telugu
+---
 
-Tamil
+## Architecture
 
-Kannada
+### System Flow
 
-Marathi
-
-Architecture
-
-Flow:
-
-Telegram
+User (Telegram)
 → Transcript Retrieval
 → Text Chunking
 → Context Ranking
 → LLM Processing
 → Structured Output
 
-Setup
+---
 
-Clone repository:
+### Design Decisions
 
-git clone https://github.com/pranishareddy21/yt-research-assistant.git
-cd yt-research-assistant
+**Transcript Handling**
+- Uses youtube-transcript-api
+- Handles missing or disabled transcripts
+- Truncates long transcripts for efficiency
 
-Install dependencies:
+**Context Management**
+- Lightweight chunking strategy
+- Simple similarity-based ranking
+- In-memory per-user session storage
 
-pip install -r requirements.txt
+**LLM Integration**
+- Groq API (llama-3.1-8b-instant)
+- Low temperature to reduce hallucination
+- Strict prompt formatting for structured outputs
 
-Create .env file:
+**Error Handling**
+- Invalid YouTube URLs
+- Transcript not available
+- Question asked before video submission
+- Multi-user session separation
 
-BOT_TOKEN=your_telegram_bot_token
-GROQ_API_KEY=your_groq_api_key
+---
 
-Run:
+## Functional Requirement Coverage
 
-python bot.py
-Edge Cases Handled
+| Requirement | Status |
+|-------------|--------|
+| Accept YouTube link | Implemented |
+| Fetch transcript | Implemented |
+| Structured summary | Implemented |
+| Contextual Q&A | Implemented |
+| Multi-language support | Implemented |
+| Error handling | Implemented |
+| Multiple user sessions | Implemented |
 
-Invalid YouTube URL
+---
 
-Missing transcript
+## Setup Instructions
 
-Long videos
+### 1. Clone Repository
 
-Multi-user sessions
+git clone https://github.com/pranishareddy21/yt-research-assistant.git  
+cd yt-research-assistant  
 
-Follow-up without prior video
+### 2. Install Dependencies
 
-Future Improvements
+pip install -r requirements.txt  
 
-Embedding-based semantic search
+### 3. Configure Environment Variables
 
-Persistent session storage
+Create a `.env` file:
 
-Transcript caching
+BOT_TOKEN=your_telegram_bot_token  
+GROQ_API_KEY=your_groq_api_key  
 
-Cloud deployment
+### 4. Run the Bot
+
+python bot.py  
+
+---
+
+## Edge Cases Handled
+
+- Invalid YouTube URL
+- Missing transcript
+- Long videos
+- Follow-up without context
+- Multi-user session handling
+
+---
+
+## Future Improvements
+
+- Embedding-based semantic retrieval
+- Transcript caching layer
+- Persistent session storage
+- Cloud deployment
+
+---
+
